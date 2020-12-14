@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_14_143344) do
+ActiveRecord::Schema.define(version: 2020_12_14_161508) do
 
   create_table "misuration_subscriptions", force: :cascade do |t|
     t.string "mac"
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 2020_12_14_143344) do
 
   create_table "users", force: :cascade do |t|
     t.string "nome"
-    t.string "cognome"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
 end
