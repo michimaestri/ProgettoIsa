@@ -1,0 +1,2 @@
+class SensorsGroupSubscription < ApplicationRecord
+end
