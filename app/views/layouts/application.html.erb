@@ -12,10 +12,14 @@
   <body class="d-flex flex-column">
     
       <%= render 'layouts/navigation'%>
+      <% if logged_in?%>
+                Benvenuto <%= current_user.nome %>
+      <% end%>
         <div id="page-content">
           <%= render 'layouts/messages'%>
           <%= yield %>
         </div>
+
     <%= render 'layouts/footer'%>
   </body>
 </html>

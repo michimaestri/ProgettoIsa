@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_14_161508) do
+ActiveRecord::Schema.define(version: 2020_12_15_140518) do
 
   create_table "misuration_subscriptions", force: :cascade do |t|
     t.string "mac"
@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(version: 2020_12_14_161508) do
     t.string "latitudine"
     t.string "longitudine"
     t.string "unit_misura"
-    t.integer "owner"
     t.boolean "public"
     t.time "downtime_to_alarm"
     t.date "last_firmware_update"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "sensors_group_subscriptions", force: :cascade do |t|

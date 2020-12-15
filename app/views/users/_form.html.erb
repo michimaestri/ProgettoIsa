@@ -1,32 +1,51 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_with(model: @user, local: true) do |form| %>
+ <%= render 'shared/errors', obj: @user%>
 
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+  <div class="row justify-content-center ">
+  <div class="col-10 shadow p-3 mb-3 bg-info rounded">
+    <div class="container">
+    
+        <div class="field">
+        <div class="form-group row">
+          <%= form.label :nome, class: "col-2 col-form-label text-light "%>
+          <div class="col-10">
+          <%= form.text_field :nome, class: "form-control shadow rounded" , placeholder: "Enter a username"%>
+          </div>
+        </div>
+      </div>
+
+
+        <div class="field">
+        <div class="form-group row">
+          <%= form.label :email, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+          <%= form.email_field :email,  class: "form-control shadow rounded",placeholder: "Enter your email" %>
+          </div>
+        </div>
+      </div>
+
+       <div class="field">
+        <div class="form-group row">
+          <%= form.label :password, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+          <%= form.password_field :password,  class: "form-control shadow rounded",placeholder: "Choose a password" %>
+          </div>
+        </div>
+      </div>
+
+        <div class="actions">
+          <div class="form-group row justify-content-center">
+            <%= form.submit(@user.new_record? ?  "Sign up" : "Update account", class: "btn btn-outline-light btn-lg") %>
+          </div>
+        </div>
+        
         <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
+    </div>
+    
+</div>
+<div class="mb-3">
+  <div class="form-group row justify-content-center">
+    <%= link_to '[Torna alla lista dei sensori]', sensors_path, class: "text-info" %>
   </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

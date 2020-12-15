@@ -1,0 +1,29 @@
+<div class="container">
+  <% @sensors.each do |sensor| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            <% if sensor.user%>
+              by <%=link_to sensor.user.nome , user_path(sensor.user)%>
+            <% end%>
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to sensor.mac, sensor_path(sensor), class: "text-success" %></h5>
+            <p class="card-text"><%= truncate(sensor.tipo, length: 100) %></p>
+            <%= link_to "View", sensor_path(sensor), class: "btn btn-outline-success" %>
+            <% if logged_in? && sensor.user==current_user %>
+              <%= link_to "Edit", edit_sensor_path(sensor), class: "btn btn-outline-info" %>
+              <%= link_to "Delete", sensor_path(sensor), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            <% end%>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Creato <%= time_ago_in_words(sensor.created_at) %> fa, 
+            Modificato <%= time_ago_in_words(sensor.updated_at) %> fa</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

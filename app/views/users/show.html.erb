@@ -1,14 +1,21 @@
-<p id="notice"><%= notice %></p>
+<h1 class="text-center mt-4">Profilo di <%= @user.nome%></h1>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @user.nome %>
-</p>
+<% if logged_in? and @user==current_user%>
+  <div class="text-center mt-4">
+    <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info"%>
+  </div>
+<% end%>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<h1 class="text-center mt-4"> Sensori </h1>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="flickr_pagination">
+  <%= will_paginate @sensors, :container => false %>
+</div>
+
+<%= render 'sensors/sensor'%>
+
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @sensors, :container => false %>
+</div>
+
+

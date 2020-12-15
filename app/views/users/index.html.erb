@@ -1,31 +1,38 @@
-<p id="notice"><%= notice %></p>
+<h1 class="text-center mt-4"> Utenti </h1>
 
-<h1>Users</h1>
+<div class="flickr_pagination">
+  <%= will_paginate @users, :container => false %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Cognome</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            <%=link_to user.nome, user_path(user) %>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= pluralize(user.sensors.count, "sensors")%></p>
+            <%= link_to "View profile", user, class: "btn btn-outline-success" %>
+            <% if logged_in?%>
+              <%if user==current_user%>
+                <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-info" %>
+              <%end%>
+              
+            <% end%>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.nome %></td>
-        <td><%= user.cognome %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @articles, :container => false %>
+</div>
 
 

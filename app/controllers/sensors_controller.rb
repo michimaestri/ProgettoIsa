@@ -1,10 +1,12 @@
 class SensorsController < ApplicationController
   before_action :set_sensor, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show,:index]
+  before_action :require_same_user, only: [:edit,:update,:destroy]
 
   # GET /sensors
   # GET /sensors.json
   def index
-    @sensors = Sensor.all
+    @sensors = Sensor.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /sensors/1
@@ -70,6 +72,13 @@ class SensorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sensor_params
-      params.require(:sensor).permit(:mac, :url, :tipo, :latitudine, :longitudine, :unit_misura, :owner, :public, :downtime_to_alarm, :last_firmware_update)
+      params.require(:sensor).permit(:mac, :url, :tipo, :latitudine, :longitudine, :unit_misura,  :public, :downtime_to_alarm, :last_firmware_update,:user_id)
+    end
+
+    def require_same_user
+      if current_user != @sensor.user 
+        flash[:alert]="Puoi modificare o eliminare solo i tuoi sensori"
+        redirect_to @sensors
+      end
     end
 end
