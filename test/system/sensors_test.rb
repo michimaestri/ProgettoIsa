@@ -19,11 +19,11 @@ class SensorsTest < ApplicationSystemTestCase
     fill_in "Latitudine", with: @sensor.latitudine
     fill_in "Longitudine", with: @sensor.longitudine
     fill_in "Mac", with: @sensor.mac
-    fill_in "Owner", with: @sensor.owner
     check "Public" if @sensor.public
     fill_in "Tipo", with: @sensor.tipo
     fill_in "Unit misura", with: @sensor.unit_misura
     fill_in "Url", with: @sensor.url
+    fill_in "Unit misura", with: @sensor.unit_misura
     click_on "Create Sensor"
 
     assert_text "Sensor was successfully created"
@@ -39,7 +39,6 @@ class SensorsTest < ApplicationSystemTestCase
     fill_in "Latitudine", with: @sensor.latitudine
     fill_in "Longitudine", with: @sensor.longitudine
     fill_in "Mac", with: @sensor.mac
-    fill_in "Owner", with: @sensor.owner
     check "Public" if @sensor.public
     fill_in "Tipo", with: @sensor.tipo
     fill_in "Unit misura", with: @sensor.unit_misura

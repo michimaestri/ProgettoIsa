@@ -2,10 +2,8 @@
 
 one:
   nome: MyString
-  cognome: MyString
   email: MyString
 
 two:
   nome: MyString
-  cognome: MyString
   email: MyString

@@ -1,5 +1,6 @@
 <div class="container">
   <% @sensors.each do |sensor| %>
+  <% if sensor.public == true || current_user == sensor.user %>
     <div class="row justify-content-md-center">
       <div class="col-8 mt-4">
         <div class="card text-center shadow mb-5 bg-white rounded">
@@ -25,5 +26,6 @@
         </div>
       </div>
     </div>
+  <% end %>
   <% end %>
 </div>

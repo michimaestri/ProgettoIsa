@@ -17,7 +17,7 @@ class SensorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create sensor" do
     assert_difference('Sensor.count') do
-      post sensors_url, params: { sensor: { downtime_to_alarm: @sensor.downtime_to_alarm, last_firmware_update: @sensor.last_firmware_update, latitudine: @sensor.latitudine, longitudine: @sensor.longitudine, mac: @sensor.mac, owner: @sensor.owner, public: @sensor.public, tipo: @sensor.tipo, unit_misura: @sensor.unit_misura, url: @sensor.url } }
+      post sensors_url, params: { sensor: { downtime_to_alarm: @sensor.downtime_to_alarm, last_firmware_update: @sensor.last_firmware_update, latitudine: @sensor.latitudine, longitudine: @sensor.longitudine, mac: @sensor.mac,public: @sensor.public, tipo: @sensor.tipo, unit_misura: @sensor.unit_misura, url: @sensor.url, user_id: @sensor.user_id } }
     end
 
     assert_redirected_to sensor_url(Sensor.last)
@@ -34,7 +34,7 @@ class SensorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update sensor" do
-    patch sensor_url(@sensor), params: { sensor: { downtime_to_alarm: @sensor.downtime_to_alarm, last_firmware_update: @sensor.last_firmware_update, latitudine: @sensor.latitudine, longitudine: @sensor.longitudine, mac: @sensor.mac, owner: @sensor.owner, public: @sensor.public, tipo: @sensor.tipo, unit_misura: @sensor.unit_misura, url: @sensor.url } }
+    patch sensor_url(@sensor), params: { sensor: { downtime_to_alarm: @sensor.downtime_to_alarm, last_firmware_update: @sensor.last_firmware_update, latitudine: @sensor.latitudine, longitudine: @sensor.longitudine, mac: @sensor.mac, public: @sensor.public, tipo: @sensor.tipo, unit_misura: @sensor.unit_misura, url: @sensor.url, user_id: @sensor.user_id } }
     assert_redirected_to sensor_url(@sensor)
   end
 
