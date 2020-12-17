@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  #id: MyString
   mac: MyString
   url: MyString
   tipo: MyString
@@ -8,10 +9,12 @@ one:
   longitudine: MyString
   unit_misura: MyString
   public: false
-  downtime_to_alarm: 2020-12-14 15:31:53
-  last_firmware_update: 2020-12-14
+  downtime_to_alarm: MyTime
+  last_firmware_update: MyDate
+  user_id: MyString
 
 two:
+  #id: MyString
   mac: MyString
   url: MyString
   tipo: MyString
@@ -19,5 +22,6 @@ two:
   longitudine: MyString
   unit_misura: MyString
   public: false
-  downtime_to_alarm: 2020-12-14 15:31:53
-  last_firmware_update: 2020-12-14
+  downtime_to_alarm: MyTime
+  last_firmware_update: MyDate
+  user_id: MyString

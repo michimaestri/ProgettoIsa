@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
    end
 
    test "Utente valido" do 
-   	assert @user.valid?
+   	assert @user.save
    end
 
    test "Nome presente" do 
