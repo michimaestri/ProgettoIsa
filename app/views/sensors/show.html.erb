@@ -1,50 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="card" style="width: 22rem;">
+  <div class="card-body">
+    <h5 class="card-title">mac: <%= @sensor.mac%></h5>
+    <p class="card-text">url: <%=@sensor.url%></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Tipo: <%= @sensor.tipo%></li>
+    <li class="list-group-item">Latitudine: <%= @sensor.latitudine%></li>
+    <li class="list-group-item">Longitudine: <%=@sensor.longitudine%></li>
+    <li class="list-group-item">Unità di misura: <%=@sensor.unit_misura%></li>
+    <li class="list-group-item">Timeout di allarme: <%=@sensor.downtime_to_alarm%></li>
+    <li class="list-group-item">Ultimo aggiornamento firware <%=@sensor.last_firmware_update%></li>
 
-<p>
-  <strong>Mac:</strong>
-  <%= @sensor.mac %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @sensor.url %>
-</p>
-
-<p>
-  <strong>Tipo:</strong>
-  <%= @sensor.tipo %>
-</p>
-
-<p>
-  <strong>Latitudine:</strong>
-  <%= @sensor.latitudine %>
-</p>
-
-<p>
-  <strong>Longitudine:</strong>
-  <%= @sensor.longitudine %>
-</p>
-
-<p>
-  <strong>Unit misura:</strong>
-  <%= @sensor.unit_misura %>
-</p>
-
-
-<p>
-  <strong>Public:</strong>
-  <%= @sensor.public %>
-</p>
-
-<p>
-  <strong>Downtime to alarm:</strong>
-  <%= @sensor.downtime_to_alarm %>
-</p>
-
-<p>
-  <strong>Last firmware update:</strong>
-  <%= @sensor.last_firmware_update %>
-</p>
-
-<%= link_to 'Edit', edit_sensor_path(@sensor) %> |
-<%= link_to 'Back', sensors_path %>
+  </ul>
+  <% if logged_in? && user=current_user %>
+    <div class="card-body">
+      <%= link_to "Edit", edit_sensor_path(@sensor), class: "btn btn-outline-info" %>
+      <%= link_to "Delete", sensor_path(@sensor), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+  <%end%>
+</div>

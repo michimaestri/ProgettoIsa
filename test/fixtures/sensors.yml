@@ -8,7 +8,7 @@ one:
   latitudine: MyString
   longitudine: MyString
   unit_misura: MyString
-  public: false
+  public: MyString
   downtime_to_alarm: MyTime
   last_firmware_update: MyDate
   user_id: MyString
@@ -21,7 +21,7 @@ two:
   latitudine: MyString
   longitudine: MyString
   unit_misura: MyString
-  public: false
+  public: MyString
   downtime_to_alarm: MyTime
   last_firmware_update: MyDate
   user_id: MyString
