@@ -1,10 +1,31 @@
 <h1 class="text-center mt-4">Profilo di <%= @user.nome%></h1>
 
-<% if logged_in? and @user==current_user%>
-  <div class="text-center mt-4">
-    <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info"%>
-  </div>
-<% end%>
+<table id="table" class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td><%=@user.nome%></td>
+      <td><%=@user.email%></td>
+      <td> 
+        <% if logged_in? and @user==current_user%>
+        <div id="boh" class="text-center mt-1">
+          <%= link_to "Modifica il tuo profilo", edit_user_path(@user), class: "btn btn-outline-info"%>
+        </div>
+        <% end%>
+
+      </td>  
+  </tr>
+  
+  </tbody>
+  
+</table>
+
+
 
 <h1 class="text-center mt-4"> Sensori </h1>
 
@@ -19,3 +40,15 @@
 </div>
 
 
+<style type="text/css">
+#table
+{
+  margin: 0 auto;
+  width: 800px;
+}
+#boh
+{
+  width: 200px;
+
+}
+</style>
