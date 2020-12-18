@@ -5,4 +5,5 @@ class Sensor < ApplicationRecord
   validates :longitudine, presence: true
   validates :unit_misura, presence: true
   validates_uniqueness_of :mac, :messages=>"Mac unico"
+  has_many :misurations, dependent: :destroy
 end
