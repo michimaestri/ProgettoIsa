@@ -1,31 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <% @misurations.each do |misuration| %>
+  <% if misuration.sensor.public==true || misuration.sensor.user == current_user%>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            <% if misuration.sensor%>
+              by <%=link_to misuration.sensor.mac , sensor_path(misuration.sensor)%>
+            <% end%>
 
-<h1>Misurations</h1>
+          </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Mac</th>
-      <th>Value</th>
-      <th>Unit</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+          <div class="card-body">
 
-  <tbody>
-    <% @misurations.each do |misuration| %>
-      <tr>
-        <td><%= misuration.mac %></td>
-        <td><%= misuration.value %></td>
-        <td><%= misuration.unit %></td>
-        <td><%= link_to 'Show', misuration %></td>
-        <td><%= link_to 'Edit', edit_misuration_path(misuration) %></td>
-        <td><%= link_to 'Destroy', misuration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Misuration', new_misuration_path %>
+            <h5 style="color:blue;" class="card-title" >Misura </h5>
+            
+            <p class="card-text"><%= misuration.value %> <%=misuration.unit%></p>
+            <%= link_to "View", misuration_path(misuration), class: "btn btn-outline-success" %>
+            
+            
+          </div>
+          <div class="card-footer text-muted">
+            <small>Creato <%= time_ago_in_words(misuration.created_at) %> fa, 
+            Modificato <%= time_ago_in_words(misuration.updated_at) %> fa</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>

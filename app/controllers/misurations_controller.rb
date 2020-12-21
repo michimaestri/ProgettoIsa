@@ -1,15 +1,18 @@
 class MisurationsController < ApplicationController
+  
   before_action :set_misuration, only: [:show, :edit, :update, :destroy]
+  before_action :require_user
 
   # GET /misurations
   # GET /misurations.json
   def index
-    @misurations = Misuration.all
+   @misurations=Misuration.all
   end
 
   # GET /misurations/1
   # GET /misurations/1.json
   def show
+
   end
 
   # GET /misurations/new
@@ -25,16 +28,16 @@ class MisurationsController < ApplicationController
   # POST /misurations.json
   def create
     @misuration = Misuration.new(misuration_params)
-
+    @misuration.mac=current_user.id
     respond_to do |format|
       if @misuration.save
-        format.html { redirect_to @misuration, notice: 'Misuration was successfully created.' }
+        format.html { redirect_to @misuration, notice: 'La misurazione è stata inserita con successo!' }
         format.json { render :show, status: :created, location: @misuration }
       else
         format.html { render :new }
-        format.json { render json: @misuration.errors, status: :unprocessable_entity }
+          format.json { render json: @misuration.errors, status: :unprocessable_entity }
       end
-    end
+    end    
   end
 
   # PATCH/PUT /misurations/1
@@ -61,6 +64,10 @@ class MisurationsController < ApplicationController
     end
   end
 
+  
+
+     
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_misuration
@@ -69,6 +76,8 @@ class MisurationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def misuration_params
+
       params.require(:misuration).permit(:mac, :value, :unit)
     end
+   
 end

@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   resources :users, except: [:new]
 
+  post 'receiver/recevie'
+  get 'receiver/state'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

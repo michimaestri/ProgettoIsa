@@ -1,19 +1,36 @@
-<p id="notice"><%= notice %></p>
+<% if logged_in?%>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Mac</th>
+      <th scope="col">Valore</th>
+      <th scope="col">Unità di misura</th>
+      <th scope="col">Data registrazione misura</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td><%=@misuration.mac%></td>
+      <td><%=@misuration.value%></td>
+      <td><%=@misuration.unit%></td>
+      <td><%=@misuration.created_at%></td>
+      <% if logged_in? && user=current_user %>
+        
+          
+          <td><%= link_to "Elimina", sensor_path(@misuration), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %></td>
+         
+  		<%end%>
 
-<p>
-  <strong>Mac:</strong>
-  <%= @misuration.mac %>
-</p>
 
-<p>
-  <strong>Value:</strong>
-  <%= @misuration.value %>
-</p>
+        
+  </tr>
+  
+  </tbody>
+  
+</table>
+<%else %>
+<%flash[:danger]="Devi essere loggato"%>
+<%end%>  
+</div>
 
-<p>
-  <strong>Unit:</strong>
-  <%= @misuration.unit %>
-</p>
-
-<%= link_to 'Edit', edit_misuration_path(@misuration) %> |
-<%= link_to 'Back', misurations_path %>
+<%= link_to 'Indietro', misurations_path %>

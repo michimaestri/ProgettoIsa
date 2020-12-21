@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_140518) do
+ActiveRecord::Schema.define(version: 2020_12_21_143951) do
 
   create_table "misuration_subscriptions", force: :cascade do |t|
     t.string "mac"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_140518) do
     t.string "unit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sensor_id"
   end
 
   create_table "sensors", force: :cascade do |t|
