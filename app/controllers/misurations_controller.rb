@@ -31,6 +31,8 @@ class MisurationsController < ApplicationController
     @misuration.mac=current_user.id
     respond_to do |format|
       if @misuration.save
+
+        UserMailer.new_misuration(@misuration).deliver_now
         format.html { redirect_to @misuration, notice: 'La misurazione è stata inserita con successo!' }
         format.json { render :show, status: :created, location: @misuration }
       else
