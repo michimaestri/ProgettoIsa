@@ -1,0 +1,9 @@
+development:
+  GMAIL_USER: "iotgateway94@gmail.com"
+  GMAIL_PASS: "Progettoisa2020"
+test: 
+  GMAIL_USER: "iotgateway94@gmail.com"
+  GMAIL_PASS: "Progettoisa2020"
+production:
+  GMAIL_USER: "iotgateway94@gmail.com"
+  GMAIL_PASS: "Progettoisa2020"
