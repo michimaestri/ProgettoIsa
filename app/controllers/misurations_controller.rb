@@ -28,7 +28,7 @@ class MisurationsController < ApplicationController
   # POST /misurations.json
   def create
     @misuration = Misuration.new(misuration_params)
-    @misuration.mac=current_user.id
+    #@misuration.mac=current_user.id
     respond_to do |format|
       if @misuration.save
 

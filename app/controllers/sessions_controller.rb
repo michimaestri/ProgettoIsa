@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
     user=User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       session[:user_id]=user.id
-      flash[:notice]="Logged in successfully"
+      flash[:notice]="Log in effettuato con successo"
       redirect_to user
 
     else
-      flash.now[:alert]="There was something wrong with your log in details"
+      flash.now[:alert]="Utente e/o password errati"
       render 'new'
     end
 

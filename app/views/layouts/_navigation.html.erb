@@ -23,6 +23,22 @@
               </div>
 
           </li>
+
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Gruppi di Sensori
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if logged_in?%>
+                  <%= link_to "Crea nuovo gruppo di sensori", new_sensors_group_path, class: "dropdown-item"%>
+                <% end%>
+                <%= link_to "Tutti i gruppi di sensori", sensors_groups_path, class: "dropdown-item"%>
+           
+                                
+              </div>
+
+          </li>
             
           
           <% if logged_in?%>

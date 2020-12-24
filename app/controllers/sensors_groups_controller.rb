@@ -1,15 +1,18 @@
 class SensorsGroupsController < ApplicationController
   before_action :set_sensors_group, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
 
   # GET /sensors_groups
   # GET /sensors_groups.json
   def index
-    @sensors_groups = SensorsGroup.all
+    @sensors_groups=SensorsGroup.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /sensors_groups/1
   # GET /sensors_groups/1.json
   def show
+    @sensors_group=SensorsGroup.find(params[:id])
+    @sensors=@sensors_group.sensors.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /sensors_groups/new
@@ -28,7 +31,7 @@ class SensorsGroupsController < ApplicationController
 
     respond_to do |format|
       if @sensors_group.save
-        format.html { redirect_to @sensors_group, notice: 'Sensors group was successfully created.' }
+        format.html { redirect_to @sensors_group, notice: 'Il gruppo di sensori è stato creato correttamente' }
         format.json { render :show, status: :created, location: @sensors_group }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class SensorsGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @sensors_group.update(sensors_group_params)
-        format.html { redirect_to @sensors_group, notice: 'Sensors group was successfully updated.' }
+        format.html { redirect_to @sensors_group, notice: 'Il gruppo di sensori è stato aggiornato correttamente' }
         format.json { render :show, status: :ok, location: @sensors_group }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class SensorsGroupsController < ApplicationController
   def destroy
     @sensors_group.destroy
     respond_to do |format|
-      format.html { redirect_to sensors_groups_url, notice: 'Sensors group was successfully destroyed.' }
+      format.html { redirect_to sensors_groups_url, notice: 'Il gruppo di sensori è stato eliminato correttamente' }
       format.json { head :no_content }
     end
   end
@@ -71,4 +74,6 @@ class SensorsGroupsController < ApplicationController
     def sensors_group_params
       params.require(:sensors_group).permit(:nome, :id_user_group)
     end
+
+    
 end

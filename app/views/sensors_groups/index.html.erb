@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Id user group</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
     <% @sensors_groups.each do |sensors_group| %>
       <tr>
         <td><%= sensors_group.nome %></td>
-        <td><%= sensors_group.id_user_group %></td>
         <td><%= link_to 'Show', sensors_group %></td>
         <td><%= link_to 'Edit', edit_sensors_group_path(sensors_group) %></td>
         <td><%= link_to 'Destroy', sensors_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -6,4 +6,6 @@ class Sensor < ApplicationRecord
   validates :unit_misura, presence: true
   validates_uniqueness_of :mac, :messages=>"Mac unico"
   has_many :misurations, dependent: :destroy
+  has_many :sensors_group, through: :sensors_group_subscriptions
+  has_many :sensors_group_subscriptions
 end
