@@ -1,27 +1,34 @@
-<p id="notice"><%= notice %></p>
+<h1 class="text-center mt-4"> Gruppi di sensori</h1>
 
-<h1>Sensors Groups</h1>
+<div class="flickr_pagination">
+  <%= will_paginate @sensors_groups, :container => false %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <% @sensors_groups.each do |sensors_group| %>
+    <div class="row justify-content-md-center">
+      <div class="col-6 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            <%=link_to sensors_group.nome.upcase, sensors_group_path(sensors_group) %>
+          </div>
+          <div class="card-body">
+          <%= link_to "Visualizza" , sensors_group_path(sensors_group),class: "btn btn-outline-info"%>
+            <% if logged_in?%>
+                
+                <%= link_to "Modifica", edit_sensors_group_path(sensors_group), class: "btn btn-outline-info" %>
+              
+            <% end%>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Creato <%= time_ago_in_words(sensors_group.created_at) %> fa</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @sensors_groups.each do |sensors_group| %>
-      <tr>
-        <td><%= sensors_group.nome %></td>
-        <td><%= link_to 'Show', sensors_group %></td>
-        <td><%= link_to 'Edit', edit_sensors_group_path(sensors_group) %></td>
-        <td><%= link_to 'Destroy', sensors_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Sensors Group', new_sensors_group_path %>
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @sensors_groups, :container => false %>
+</div>

@@ -8,6 +8,9 @@
             <% if sensor.user%>
               by <%=link_to sensor.user.nome , user_path(sensor.user)%>
             <% end%>
+            <% if sensor.sensors_groups.any? %>
+              <div class="mt-2"><%= render sensor.sensors_groups%></div>
+            <%end%>
 
           </div>
 

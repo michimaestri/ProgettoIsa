@@ -1,14 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @sensors_group.nome %>
-</p>
+<table id="table" class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Nome gruppo di sensori</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td><%=@sensors_group.nome%></td>
+      <td> 
 
-<p>
-  <strong>Id user group:</strong>
-  <%= @sensors_group.id_user_group %>
-</p>
+      </td>  
+  </tr>
+  
+  </tbody>
+  
+</table>
 
-<%= link_to 'Edit', edit_sensors_group_path(@sensors_group) %> |
-<%= link_to 'Back', sensors_groups_path %>
+
