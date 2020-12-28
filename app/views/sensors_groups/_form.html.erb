@@ -1,7 +1,7 @@
 <%= form_with(model: sensors_group, local: true) do |form| %>
   <% if sensors_group.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(sensors_group.errors.count, "error") %> prohibited this sensors_group from being saved:</h2>
+      <h2><%= pluralize(sensors_group.errors.count, "errore") %> proibisce di salvare questo gruppo di sensori</h2>
 
       <ul>
         <% sensors_group.errors.full_messages.each do |message| %>
@@ -11,12 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
-  </div>
+  <div class="row justify-content-center ">
+  <div class="col-10 shadow p-3 mb-3 bg-info rounded">
+    <div class="container">
+    
+        <div class="field">
+        <div class="form-group row">
+          <%= form.label :nome, class: "col-2 col-form-label text-light "%>
+          <div class="col-10">
+          <%= form.text_field :nome, class: "form-control shadow rounded"%>
+          </div>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+        <div class="actions">
+          <div class="form-group row justify-content-center">
+            <%= form.submit(@sensors_group.new_record? ?  "Crea gruppo di sensori" : "Modifica sensore", class: "btn btn-outline-light btn-lg") %>
+          </div>
+        </div>
+
+    </div>
+    </div>
+    
   </div>
+    <div class="mb-3">
+      <div class="form-group row justify-content-center">
+       <%= link_to '[Torna alla lista dei gruppi di sensori]', sensors_groups_path, class: "text-info" %>
+  </div>
+</div>
 <% end %>
