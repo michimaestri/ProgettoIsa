@@ -12,6 +12,8 @@
           <div class="card-header font-italic">
             <%=link_to user.nome, user_path(user) %>
           </div>
+          </p>
+          <p> <%=image_tag("profilo.jpg", alt: "",size: "66x60")%></p>
           <div class="card-body">
             <p class="card-text"><%= pluralize(user.sensors.count, "sensors")%></p>
             <%= link_to "View profile", user, class: "btn btn-outline-success" %>
