@@ -15,7 +15,19 @@
   </tr>
   
   </tbody>
+  </table>
+  <h1 class="text-center mt-4"> Sensori </h1>
+
+<div class="flickr_pagination">
+  <%= will_paginate @sensors, :container => false %>
+</div>
+
+<%= render 'sensors/sensor'%>
+
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @sensors, :container => false %>
+</div>
   
-</table>
+
 
 

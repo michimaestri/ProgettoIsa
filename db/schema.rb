@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_121406) do
+ActiveRecord::Schema.define(version: 2020_12_28_154410) do
 
   create_table "misuration_subscriptions", force: :cascade do |t|
     t.string "mac"
@@ -41,13 +41,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_121406) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-  end
-
-  create_table "sensors_group_subscriptions", force: :cascade do |t|
     t.integer "sensors_group_id"
-    t.integer "sensor_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sensors_groups", force: :cascade do |t|

@@ -28,7 +28,7 @@ class SensorsController < ApplicationController
   def create
     @sensor = Sensor.new(sensor_params)
     @sensor.user_id=current_user.id
-
+    
     respond_to do |format|
       if @sensor.save
         format.html { redirect_to @sensor, notice: 'Sensor was successfully created.' }
@@ -72,7 +72,7 @@ class SensorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sensor_params
-      params.require(:sensor).permit(:mac, :url, :tipo, :latitudine, :longitudine, :unit_misura,  :public, :downtime_to_alarm, :last_firmware_update,:user_id)
+      params.require(:sensor).permit(:mac, :url, :tipo, :latitudine, :longitudine, :unit_misura,  :public, :downtime_to_alarm, :last_firmware_update,:user_id,:sensors_group_id)
     end
 
     def require_same_user
