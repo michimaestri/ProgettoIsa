@@ -7,4 +7,9 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.new_misuration(misuration)
   end
 
+  def send_alarm
+    misuration = Misuration.last
+    UserMailer.send_alarm(misuration)
+  end
+
 end

@@ -2,12 +2,13 @@ class ReceiverController < ApplicationController
 
   skip_before_action :verify_authenticity_token
   def recevie
-  	@misuration = Misuration.new(misuration_params)
-    if @misuration.created_at > @misuration.sensor.downtime_to_alarm
-      UserMailer.send_alarm(@misuration).deliver_now
-    end
+    @misuration = Misuration.new(misuration_params)
+    
     respond_to do |format|
       if @misuration.save
+        if (@misuration.created_at > @misuration.sensor.downtime_to_alarm)
+          UserMailer.send_alarm(@misuration).deliver_now
+        end
         UserMailer.new_misuration(@misuration).deliver_now
         msg = { :status => "ok", :message => "Success!"}
         format.json  { render :json => msg }
