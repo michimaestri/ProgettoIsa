@@ -11,7 +11,6 @@ class SensorsGroupsController < ApplicationController
   # GET /sensors_groups/1
   # GET /sensors_groups/1.json
   def show
-    #@sensors_group=SensorsGroup.find(params[:id])
     @sensors=@sensors_group.sensors.paginate(page: params[:page], per_page: 5)
   end
 
