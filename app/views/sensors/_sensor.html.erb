@@ -6,7 +6,7 @@
         <div class="card text-center shadow mb-5 bg-white rounded">
           <div class="card-header font-italic">
             <% if sensor.user%>
-              by <%=link_to sensor.user.nome , user_path(sensor.user)%>
+              di <%=link_to sensor.user.nome , user_path(sensor.user)%>
             <% end%>
             <% if sensor.sensors_group %>
               <div class="mt-2"><%= sensor.sensors_group.nome%></div>
@@ -21,11 +21,11 @@
             <p> <%=image_tag("sensore.jpg", alt: "")%></p>
 
             <p class="card-text"><%= truncate(sensor.tipo, length: 100) %></p>
-            <%= link_to "View", sensor_path(sensor), class: "btn btn-outline-success" %>
+            <%= link_to "Visualizza", sensor_path(sensor), class: "btn btn-outline-success" %>
             
             <% if logged_in? && sensor.user==current_user %>
-              <%= link_to "Edit", edit_sensor_path(sensor), class: "btn btn-outline-info" %>
-              <%= link_to "Delete", sensor_path(sensor), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+              <%= link_to "Modifica", edit_sensor_path(sensor), class: "btn btn-outline-info" %>
+              <%= link_to "Elimina", sensor_path(sensor), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
             <% end%>
           </div>
           <div class="card-footer text-muted">
