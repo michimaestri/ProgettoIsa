@@ -2,7 +2,8 @@ require 'test_helper'
 
 class SensorsGroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @sensors_group = sensors_groups(:one)
+    @sensors_group = SensorsGroup.create(nome:"velocità")
+    @user = User.create(nome:"Matteo1",email:"matteo1@gmail.com",password: "password")
   end
 
   test "should get index" do
@@ -11,13 +12,15 @@ class SensorsGroupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    sign_in_as(@user)
     get new_sensors_group_url
     assert_response :success
   end
 
   test "should create sensors_group" do
-    assert_difference('SensorsGroup.count') do
-      post sensors_groups_url, params: { sensors_group: { id_user_group: @sensors_group.id_user_group, nome: @sensors_group.nome } }
+    sign_in_as(@user)
+    assert_difference('SensorsGroup.count',1) do
+      post sensors_groups_url, params: { sensors_group: { nome: "temperatura"} }
     end
 
     assert_redirected_to sensors_group_url(SensorsGroup.last)
@@ -29,16 +32,19 @@ class SensorsGroupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
+    sign_in_as(@user)
     get edit_sensors_group_url(@sensors_group)
     assert_response :success
   end
 
   test "should update sensors_group" do
-    patch sensors_group_url(@sensors_group), params: { sensors_group: { id_user_group: @sensors_group.id_user_group, nome: @sensors_group.nome } }
+    sign_in_as(@user)
+    patch sensors_group_url(@sensors_group), params: { sensors_group: {  nome: @sensors_group.nome } }
     assert_redirected_to sensors_group_url(@sensors_group)
   end
 
   test "should destroy sensors_group" do
+    sign_in_as(@user)
     assert_difference('SensorsGroup.count', -1) do
       delete sensors_group_url(@sensors_group)
     end

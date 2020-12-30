@@ -11,3 +11,8 @@ two:
   nome: MyString
   email: MyString
   password_digest: MyString
+
+david:
+  nome: david
+  email: david@gmail.com
+  password_digest: MyString

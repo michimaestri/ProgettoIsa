@@ -6,7 +6,7 @@ class MisurationsController < ApplicationController
   # GET /misurations
   # GET /misurations.json
   def index
-   @misurations=Misuration.all
+    @misurations = Misuration.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /misurations/1
