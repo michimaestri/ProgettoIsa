@@ -17,7 +17,7 @@
                 <% if logged_in?%>
                   <%= link_to "Crea un nuovo sensore", new_sensor_path, class: "dropdown-item"%>
                 <% end%>
-                <%= link_to "Tutti i sensori", sensors_path, class: "dropdown-item"%>
+                <%= link_to "Sensori pubblici", sensori_pubblici_path, class: "dropdown-item"%>
            
                                 
               </div>
@@ -42,10 +42,23 @@
             
           
           <% if logged_in?%>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Misurazioni', misurations_path, class: "nav-link"%>
-              </li>
+              
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Misurazioni
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if logged_in?%>
+                  <%= link_to "Mie misurazioni", mie_misure_path, class: "dropdown-item"%>
+                <% end%>
+                <%= link_to "Misurazioni pubbliche", misurations_path, class: "dropdown-item"%>
+           
+                                
+              </div>
+
+          </li>
+
+
                 <li class="nav-item">
                   <%= link_to "Profilo", user_path(current_user), class: "nav-link"%>
                 </li>
@@ -68,9 +81,6 @@
           <%end%>
           
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        
       </div>
 </nav>

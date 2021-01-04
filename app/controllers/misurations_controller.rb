@@ -9,6 +9,11 @@ class MisurationsController < ApplicationController
     @misurations = Misuration.paginate(:page => params[:page], :per_page => 5)
   end
 
+
+  def mie_misure
+    @misurations = Misuration.paginate(:page => params[:page], :per_page => 5)
+  end  
+  
   # GET /misurations/1
   # GET /misurations/1.json
   def show

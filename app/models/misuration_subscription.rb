@@ -1,2 +1,0 @@
-class MisurationSubscription < ApplicationRecord
-end

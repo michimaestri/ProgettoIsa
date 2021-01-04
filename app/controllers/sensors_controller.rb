@@ -14,6 +14,9 @@ class SensorsController < ApplicationController
   def show
   end
 
+  def sensori_pubblici
+    @sensors = Sensor.paginate(:page => params[:page], :per_page => 5)
+  end  
   # GET /sensors/new
   def new
     @sensor = Sensor.new

@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   resources :sensors_group_subscriptions
   resources :sensors_groups
-  resources :misuration_subscriptions
   resources :misurations
   resources :sensors
   get 'registrati', to: 'users#new'
@@ -11,6 +10,10 @@ Rails.application.routes.draw do
   post 'login',to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   resources :users, except: [:new]
+
+  get 'sensori_pubblici', to: 'sensors#sensori_pubblici'
+  get 'mie_misure', to: 'misurations#mie_misure'
+  
 
   post 'receiver/recevie'
   get 'receiver/state'
