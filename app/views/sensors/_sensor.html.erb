@@ -6,10 +6,10 @@
         <div class="card text-center shadow mb-5 bg-white rounded">
           <div class="card-header font-italic">
             <% if sensor.user%>
-              di <%=link_to sensor.user.nome , user_path(sensor.user)%>
+              Sensore di <%=link_to sensor.user.nome , user_path(sensor.user)%>
             <% end%>
             <% if sensor.sensors_group %>
-              <div class="mt-2"><%= sensor.sensors_group.nome%></div>
+               <div class="mt-2">Categoria: <%= sensor.sensors_group.nome%></div>
             <%end%>
 
           </div>
