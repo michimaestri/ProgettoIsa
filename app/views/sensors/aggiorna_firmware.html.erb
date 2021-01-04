@@ -1,0 +1,42 @@
+<%= form_with(model: @sensor, local: true) do |form| %>
+<div class="container">
+   <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            <% if @sensors.user%>
+              Sensore di <%=link_to @sensors.user.nome , user_path(@sensors.user)%>
+            <% end%>
+            <% if @sensors.sensors_group %>
+               <div class="mt-2">Categoria: <%= @sensors.sensors_group.nome%></div>
+            <%end%>
+
+          </div>
+
+          <div class="card-body">
+
+            <h5 class="card-title", style="color: green"><%= @sensors.mac %></h5>
+
+
+            <p> <%=image_tag("sensore.jpg", alt: "")%></p>
+
+            <p class="card-text">Ultimo aggiornamento firmware: <%= @sensors.last_firmware_update %></p>
+            
+                             
+            
+          <div class="form-group row">
+          <div class="col-10">
+            <%= form.file_field :tipo,  class: "form-control shadow rounded"%>
+          </div>
+        </div>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Creato <%= time_ago_in_words(@sensors.created_at) %> fa, 
+            Modificato <%= time_ago_in_words(@sensors.updated_at) %> fa</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <% end %>
+</div>

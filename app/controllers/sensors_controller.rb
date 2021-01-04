@@ -14,6 +14,10 @@ class SensorsController < ApplicationController
   def show
   end
 
+  def aggiorna_firmware
+    @sensors = Sensor.find(params[:id])
+  end  
+
   def sensori_pubblici
     @sensors = Sensor.paginate(:page => params[:page], :per_page => 5)
   end  

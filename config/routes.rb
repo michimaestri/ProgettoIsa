@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'sensori_pubblici', to: 'sensors#sensori_pubblici'
   get 'mie_misure', to: 'misurations#mie_misure'
   
-
+  get 'aggiorna_firmware',to: 'sensors#aggiorna_firmware'
   post 'receiver/recevie'
   get 'receiver/state'
 
