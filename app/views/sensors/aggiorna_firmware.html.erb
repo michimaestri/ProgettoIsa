@@ -1,4 +1,4 @@
-<%= form_with(model: @sensor, local: true) do |form| %>
+<%= form_with(model: @sensors, local: true) do |form| %>
 <div class="container">
    <div class="row justify-content-md-center">
       <div class="col-8 mt-4">
@@ -22,18 +22,61 @@
 
             <p class="card-text">Ultimo aggiornamento firmware: <%= @sensors.last_firmware_update %></p>
             
+        <div class="form-group row">
+          <div class="col-10">
+            <%= form.file_field :image,  class: "form-control shadow rounded"%>
+              <div class="form-group row justify-content-center">
+              <%= form.submit(@sensors.new_record? ?  "Crea sensore" : "Aggiorna firware",  class: "btn btn-outline-primary") %>
+            </div>
+        </div>
+
+         
+          <%= form.hidden_field :mac, class: "form-control shadow rounded"%>
+        
+
+
+        
+          <%= form.hidden_field :url,  class: "form-control shadow rounded"%>
+       
+
+     
+          <%= form.hidden_field :tipo,  class: "form-control shadow rounded"%>
+        
+
+      
+          <%= form.hidden_field :latitudine,  class: "form-control shadow rounded"%>
+        
+
+      
+          <%= form.hidden_field :longitudine,  class: "form-control shadow rounded"%>
+        
+
+      
+          <%= form.hidden_field :unit_misura,  class: "form-control shadow rounded"%>
+        
+
+    
+          <%= form.hidden_field :public,  class: "form-check-input"%>
+      
+
+ 
+          <%= form.hidden_field :downtime_to_alarm,  class: "form-control shadow rounded"%>
+         
+
+     
+          <%= form.hidden_field :last_firmware_update,  class: "form-control shadow rounded"%>
+         
+
+     
+            <%= form.hidden_field :sensors_group_id %>
+         
                              
             
-          <div class="form-group row">
-          <div class="col-10">
-            <%= form.file_field :tipo,  class: "form-control shadow rounded"%>
+          
           </div>
         </div>
           </div>
-          <div class="card-footer text-muted">
-            <small>Creato <%= time_ago_in_words(@sensors.created_at) %> fa, 
-            Modificato <%= time_ago_in_words(@sensors.updated_at) %> fa</small>
-          </div>
+          
         </div>
       </div>
     </div>

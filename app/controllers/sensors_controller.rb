@@ -18,6 +18,19 @@ class SensorsController < ApplicationController
     @sensors = Sensor.find(params[:id])
   end  
 
+  def caricamento_firmware
+    
+    respond_to do |format|
+      if @sensor.update(sensor_params)
+        format.html { redirect_to @sensor, notice: 'Sensor was successfully updated.' }
+        format.json { render :show, status: :ok, location: @sensor }
+      else
+        format.html { render :edit }
+        format.json { render json: @sensor.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def sensori_pubblici
     @sensors = Sensor.paginate(:page => params[:page], :per_page => 5)
   end  
@@ -29,6 +42,8 @@ class SensorsController < ApplicationController
   # GET /sensors/1/edit
   def edit
   end
+
+
 
   # POST /sensors
   # POST /sensors.json
@@ -79,7 +94,7 @@ class SensorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sensor_params
-      params.require(:sensor).permit(:mac, :url, :tipo, :latitudine, :longitudine, :unit_misura,  :public, :downtime_to_alarm, :last_firmware_update,:user_id,:sensors_group_id)
+      params.require(:sensor).permit(:mac, :url, :tipo, :latitudine, :longitudine, :unit_misura,  :public, :downtime_to_alarm, :last_firmware_update,:user_id,:sensors_group_id,:image)
     end
 
     def require_same_user

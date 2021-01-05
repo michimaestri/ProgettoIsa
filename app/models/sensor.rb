@@ -1,4 +1,5 @@
 class Sensor < ApplicationRecord
+  has_one_attached :image,:dependent => :destroy
   belongs_to :user
   belongs_to :sensors_group
   has_many :misurations, dependent: :destroy
