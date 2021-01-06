@@ -24,20 +24,24 @@
 .jumbotron{
   background-color: #003366;
   background-position: center center;
+  background-image: url('Iot2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 425px;
+  height: 700px;
+
 }
 
 html,
 body {
   height: 100%;
+  margin-top: -20px;
 }
 h1
-{text-align: center;}
+{text-align: center; }
 #page-content {
   flex: 1 0 auto;
   background-color: lightgrey;
+  
 }
 
 #sticky-footer {
