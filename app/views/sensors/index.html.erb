@@ -1,9 +1,9 @@
 <h1 class="text-center mt-4"> Tutti i sensori</h1>
 
 <div class="flickr_pagination">
-  <%= will_paginate @sensors, :container => false %>
+  <%= will_paginate @sensors, :container => false ,:previous_label => 'Precedenti', :next_label => 'Successivi' %>%>
 </div>
 <%= render 'sensor'%>
 <div class="flickr_pagination mb-4">
-  <%= will_paginate @sensors, :container => false %>
+  <%= will_paginate @sensors, :container => false,:previous_label => 'Precedenti', :next_label => 'Successivi' %>
 </div>

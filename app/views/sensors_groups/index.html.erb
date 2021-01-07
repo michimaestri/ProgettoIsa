@@ -1,7 +1,7 @@
 <h1 class="text-center mt-4"> Gruppi di sensori</h1>
 
 <div class="flickr_pagination">
-  <%= will_paginate @sensors_groups, :container => false %>
+  <%= will_paginate @sensors_groups, :container => false,:previous_label => 'Precedenti', :next_label => 'Successivi'  %>
 </div>
 
 <div class="container">
@@ -30,5 +30,5 @@
 </div>
 
 <div class="flickr_pagination mb-4">
-  <%= will_paginate @sensors_groups, :container => false %>
+  <%= will_paginate @sensors_groups, :container => false,:previous_label => 'Precedenti', :next_label => 'Successivi'  %>
 </div>
