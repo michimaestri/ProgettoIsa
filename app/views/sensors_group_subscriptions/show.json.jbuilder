@@ -1,1 +1,0 @@
-json.partial! "sensors_group_subscriptions/sensors_group_subscription", sensors_group_subscription: @sensors_group_subscription
