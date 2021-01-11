@@ -24,6 +24,8 @@
           <div class="card-body">
             <% if sensor.image.attached?%>
               Ultimo aggiornamento firware: <%= sensor.image.created_at%>
+            <% else%>
+              Ultimo aggiornamento firware: <%= sensor.last_firmware_update%>
             <% end%>
             <h5 class="card-title"><%= link_to sensor.mac, sensor_path(sensor), class: "text-success" %></h5>
 

@@ -19,8 +19,12 @@
 
 
             <p> <%=image_tag("sensore.jpg", alt: "")%></p>
-
-            <p class="card-text">Ultimo aggiornamento firmware: <%= @sensors.last_firmware_update %></p>
+             <% if @sensors.image.attached?%>
+              Ultimo aggiornamento firware: <%= @sensors.image.created_at%>
+            <% else%>
+              Ultimo aggiornamento firware: <%= @sensors.last_firmware_update%>
+            <% end%>
+            
             
         <div class="form-group row">
           <div class="col-8">

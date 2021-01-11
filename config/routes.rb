@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   post 'login',to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   resources :users, except: [:new]
-
-  post 'aggiorna_firmware', to: 'sensors#caricamento_firmware'  
+ 
   get 'sensori_pubblici', to: 'sensors#sensori_pubblici'
   get 'mie_misure', to: 'misurations#mie_misure'
   

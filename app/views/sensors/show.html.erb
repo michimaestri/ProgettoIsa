@@ -22,10 +22,10 @@
       <td><%=@sensor.public%></td>
       <td><%=@sensor.downtime_to_alarm%></td>
       <% if @sensor.image.attached?%>
-        <td><%= @sensor.image.created_at%></td>
-      <%else%>
-        <td><%=@sensor.last_firmware_update%></td>
-      <% end%>
+        <td> <%= @sensor.image.created_at%>
+      <% else%>  
+        <td><%= @sensor.last_firmware_update%></td>
+      <%end%>
       <td>
         <% if logged_in? && user=current_user %>
         

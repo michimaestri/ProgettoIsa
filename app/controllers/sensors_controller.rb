@@ -1,7 +1,7 @@
 class SensorsController < ApplicationController
-  before_action :set_sensor, only: [:show, :edit, :update, :destroy]
+  before_action :set_sensor, only: [:show, :edit, :update, :destroy, :caricamento_firmware]
   before_action :require_user, except: [:show,:index]
-  before_action :require_same_user, only: [:edit,:update,:destroy]
+  before_action :require_same_user, only: [:edit,:update,:destroy, :caricamento_firmware]
 
   # GET /sensors
   # GET /sensors.json
@@ -18,18 +18,6 @@ class SensorsController < ApplicationController
     @sensors = Sensor.find(params[:id])
   end  
 
-  def caricamento_firmware
-    
-    respond_to do |format|
-      if @sensor.update(sensor_params)
-        format.html { redirect_to @sensor, notice: 'Sensor was successfully updated.' }
-        format.json { render :show, status: :ok, location: @sensor }
-      else
-        format.html { render :edit }
-        format.json { render json: @sensor.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def sensori_pubblici
     @sensors = Sensor.paginate(:page => params[:page], :per_page => 5)
@@ -49,11 +37,12 @@ class SensorsController < ApplicationController
   # POST /sensors.json
   def create
     @sensor = Sensor.new(sensor_params)
+    #@sensor.image.created_at=Time.now
     @sensor.user_id=current_user.id
     
     respond_to do |format|
       if @sensor.save
-        format.html { redirect_to @sensor, notice: 'Sensor was successfully created.' }
+        format.html { redirect_to @sensor, notice: 'Sensore creato correttamente' }
         format.json { render :show, status: :created, location: @sensor }
       else
         format.html { render :new }
@@ -67,7 +56,7 @@ class SensorsController < ApplicationController
   def update
     respond_to do |format|
       if @sensor.update(sensor_params)
-        format.html { redirect_to @sensor, notice: 'Sensor was successfully updated.' }
+        format.html { redirect_to @sensor, notice: 'Sensore aggiornato correttamente' }
         format.json { render :show, status: :ok, location: @sensor }
       else
         format.html { render :edit }
