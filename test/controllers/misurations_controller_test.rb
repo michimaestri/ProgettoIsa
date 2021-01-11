@@ -8,22 +8,6 @@ class MisurationsControllerTest < ActionDispatch::IntegrationTest
     @misuration=Misuration.create(mac: "3D:F2:C9:A6:B3:2F", value: "123", unit:"fd", sensor_id: @sensor.id)
   end
 
-  #test "should get index" do
-    #sign_in_as(@user)
-    #get misurations_url
-    #assert_response :success
-  #end
-
-
-
-  #test "should create misuration" do
-    #assert_difference('Misuration.count') do
-      #post misurations_url, params: { misuration: { mac: @misuration.mac, unit: @misuration.unit, value: @misuration.value } }
-    #end
-
-    #assert_redirected_to misuration_url(Misuration.last)
-   #end
-
   test "should show misuration" do
     sign_in_as(@user)
     get misuration_url(@misuration)
