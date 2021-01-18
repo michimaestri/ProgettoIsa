@@ -16,7 +16,7 @@
 
           <div class="card-body">
             <% if sensor.image.attached?%>
-              Ultimo aggiornamento firware: <%= sensor.image.created_at%>
+              Ultimo aggiornamento firware: <%= sensor.image.created_at.strftime("%d-%m-%Y %H:%M")%>
             <% else%>
               Ultimo aggiornamento firware: <%= sensor.last_firmware_update%>
             <% end%>

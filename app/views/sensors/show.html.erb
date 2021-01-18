@@ -20,9 +20,9 @@
       <td><%=@sensor.longitudine%></td>
       <td><%=@sensor.unit_misura%></td>
       <td><%=@sensor.public%></td>
-      <td><%=@sensor.downtime_to_alarm%></td>
+      <td><%=@sensor.downtime_to_alarm.strftime("%Y-%m-%g %H:%M")%></td>
       <% if @sensor.image.attached?%>
-        <td> <%= @sensor.image.created_at%>
+        <td> <%= @sensor.image.created_at.strftime("%Y-%m-%d %H:%M")%>
       <% else%>  
         <td><%= @sensor.last_firmware_update%></td>
       <%end%>

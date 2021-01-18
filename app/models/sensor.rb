@@ -7,7 +7,6 @@ class Sensor < ApplicationRecord
   validates :latitudine, presence: true
   validates :longitudine, presence: true
   validates :unit_misura, presence: true
+  validates :downtime_to_alarm, presence: true
   validates_uniqueness_of :mac, :messages=>"Mac unico"
-  
-  
 end
